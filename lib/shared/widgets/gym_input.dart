@@ -7,6 +7,7 @@ class GymInput extends StatelessWidget {
   final IconData? prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
+  final bool? obscureText;
 
   const GymInput({
     super.key,
@@ -14,6 +15,7 @@ class GymInput extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     required this.hintText,
+    this.obscureText,
   });
 
   @override
@@ -22,6 +24,7 @@ class GymInput extends StatelessWidget {
 
     return TextField(
       controller: controller,
+      obscureText: obscureText == true,
       style: const TextStyle(color: Colors.white),
       focusNode: _inputFocusNode,
       decoration: InputDecoration(

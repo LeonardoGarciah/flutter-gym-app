@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gym_app/modules/auth/controllers/auth_controller.dart';
 import 'package:flutter_gym_app/modules/auth/widgets/password_input.dart';
-import 'package:flutter_gym_app/shared/enums/button_size_enum.dart';
 import 'package:flutter_gym_app/shared/enums/button_type_enum.dart';
 import 'package:flutter_gym_app/shared/enums/text_size_enum.dart';
 import 'package:flutter_gym_app/shared/widgets/gym_button.dart';
@@ -12,8 +11,8 @@ import 'package:flutter_gym_app/shared/widgets/gym_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,9 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GymText(
-              'Entre na sua\nconta',
-              boldText: true,
+              'Crie a sua\nconta',
               size: TextSizeEnum.large,
+              boldText: true,
             ),
             const Gap(16),
             GymInput(
@@ -42,42 +41,29 @@ class LoginPage extends StatelessWidget {
               controller: controller.passwordController,
             ),
             const Gap(16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GymButton(
-                  'Esqueceu a senha?',
-                  onPressed: () {},
-                  type: ButtonTypeEnum.text,
-                  size: ButtonSizeEnum.small,
-                ),
-              ],
+            PasswordInput(
+              controller: controller.confirmPasswordController,
+              hintText: 'Confirmar senha',
             ),
-            const Gap(20),
+            const Gap(40),
             Center(
               child: GymButton(
-                'Entrar',
+                'Registrar',
                 onPressed: () {},
               ),
             ),
             const Gap(40),
-            const Row(
+           Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(child: GymDivider()),
-                Gap(8),
-                GymText('ou'),
-                Gap(8),
-                Expanded(child: GymDivider()),
+                const GymText('Já tem uma conta?', size: TextSizeEnum.small,),
+                GymButton(
+                  'Entrar',
+                  onPressed: controller.gotoLogin,
+                  type: ButtonTypeEnum.text,
+                ),
               ],
-            ),
-            const Gap(40),
-            Center(
-              child: GymButton(
-                'Cadastrar-se',
-                onPressed: controller.gotoRegister,
-                type: ButtonTypeEnum.elevated,
-              ),
-            ),
+           )
           ],
         ),
       ),
