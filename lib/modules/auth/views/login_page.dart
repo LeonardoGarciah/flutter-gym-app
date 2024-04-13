@@ -8,7 +8,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GymScaffold(
       body: const Text('Login Page'),
-      title: 'Login',
     );
   }
 }

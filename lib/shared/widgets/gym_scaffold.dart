@@ -6,26 +6,17 @@ class GymScaffold extends StatelessWidget {
   final String? title;
   final AppBar? appBar;
 
-  GymScaffold({
+  const GymScaffold({
     super.key,
     required this.body,
     this.title,
     this.appBar,
-  }) {
-    assert(
-      (title != null && appBar == null) ||
-          (title == null && appBar != null),
-      'You must provide a title or an AppBar',
-    );
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar ??
-          AppBar(
-            title: GymText(title ?? ''),
-          ),
+      appBar: appBar,
       body: body,
     );
   }

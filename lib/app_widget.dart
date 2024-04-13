@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gym_app/core/theme.dart';
 import 'package:flutter_gym_app/modules/auth/controllers/auth_controller.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: AuthController.verifyAuthenticateRoute(),
+      theme: getAppTheme(),
     );
   }
 }
