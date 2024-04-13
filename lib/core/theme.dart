@@ -5,9 +5,9 @@ ColorScheme getColorScheme() {
   return ColorScheme.fromSeed(seedColor: Colors.blue).copyWith(
     primary: ColorUtils.hexOrRGBToColor('#6842FF'),
     secondary: ColorUtils.hexOrRGBToColor('#573BCA'),
-    tertiary: ColorUtils.hexOrRGBToColor('#4CAF50'),
+    tertiary: ColorUtils.hexOrRGBToColor('#1F222A'),
     surface: Colors.white,
-    background: Colors.white,
+    background: ColorUtils.hexOrRGBToColor('#181A20'),
     error: Colors.red,
     onPrimary: Colors.white,
     onSecondary: Colors.white,
