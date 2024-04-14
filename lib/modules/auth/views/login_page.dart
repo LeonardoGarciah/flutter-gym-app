@@ -40,6 +40,7 @@ class LoginPage extends StatelessWidget {
             const Gap(16),
             PasswordInput(
               controller: controller.passwordController,
+              textInputAction: TextInputAction.done,
             ),
             const Gap(16),
             Row(

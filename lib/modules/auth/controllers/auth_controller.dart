@@ -5,6 +5,7 @@ import 'package:flutter_gym_app/modules/auth/repositories/auth_repository.dart';
 import 'package:flutter_gym_app/modules/auth/views/login_page.dart';
 import 'package:flutter_gym_app/modules/auth/views/register_page.dart';
 import 'package:flutter_gym_app/modules/home/views/home_page.dart';
+import 'package:flutter_gym_app/modules/user_additional_information/views/user_additional_information_page.dart';
 import 'package:flutter_gym_app/shared/domain/user_domain.dart';
 import 'package:flutter_gym_app/shared/repositories/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter_gym_app/shared/services/get_service.dart';
@@ -28,7 +29,7 @@ class AuthController {
     UserBloc userBloc = GetService.getBloc(() => UserBloc());
 
     if ((userBloc.state.user?.token ?? '').isNotEmpty) {
-      return const HomePage();
+      return const UserAdditionalInformationPage();
     }
     return const LoginPage();
   }

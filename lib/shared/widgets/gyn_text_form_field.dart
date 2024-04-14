@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class GymInput extends StatelessWidget {
+class GymTextFormField extends StatelessWidget {
   final TextEditingController? controller;
 
   final IconData? prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
   final bool? obscureText;
+  final int? maxLength;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
-  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
 
-  const GymInput({
+  const GymTextFormField({
     super.key,
     required this.controller,
     this.prefixIcon,
     this.suffixIcon,
     required this.hintText,
     this.obscureText,
+    this.inputFormatters,
     this.maxLength,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
@@ -28,14 +31,15 @@ class GymInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final FocusNode _inputFocusNode = FocusNode();
 
-    return TextField(
+    return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText == true,
       style: const TextStyle(color: Colors.white),
+      inputFormatters: inputFormatters,
       focusNode: _inputFocusNode,
-      textInputAction: textInputAction,
       maxLength: maxLength,
+      textInputAction: textInputAction,
       decoration: InputDecoration(
         fillColor: Theme.of(context).colorScheme.tertiary,
         focusColor: Theme.of(context).colorScheme.secondary,
@@ -52,8 +56,8 @@ class GymInput extends StatelessWidget {
                 size: 16,
                 color: _inputFocusNode.hasFocus
                     ? Theme.of(context)
-                        .colorScheme
-                        .secondary
+                    .colorScheme
+                    .secondary
                     : Theme.of(context).disabledColor,
               );
             },
@@ -66,7 +70,7 @@ class GymInput extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
               color:
-                  Theme.of(context).colorScheme.secondary,
+              Theme.of(context).colorScheme.secondary,
               width: 2.0),
           borderRadius: BorderRadius.circular(16),
         ),

@@ -6,6 +6,8 @@ class GymText extends StatelessWidget {
   final TextSizeEnum size;
   final TextStyle? style;
   final bool? boldText;
+  final TextAlign? textAlign;
+  final Color? color;
 
   const GymText(
     this.text, {
@@ -13,15 +15,18 @@ class GymText extends StatelessWidget {
     this.size = TextSizeEnum.medium,
     this.style,
     this.boldText,
+    this.textAlign,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
         fontSize: size.value,
-        color: Colors.white,
+        color: color ?? Colors.white,
         fontWeight: boldText == true ? FontWeight.bold : FontWeight.normal,
       ).merge(style),
     );
