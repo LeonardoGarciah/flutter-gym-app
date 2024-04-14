@@ -37,6 +37,12 @@ class RegisterPage extends StatelessWidget {
               hintText: 'Email',
             ),
             const Gap(16),
+            GymInput(
+              controller: controller.name,
+              prefixIcon: FontAwesomeIcons.person,
+              hintText: 'Nome',
+            ),
+            const Gap(16),
             PasswordInput(
               controller: controller.passwordController,
             ),
@@ -49,7 +55,7 @@ class RegisterPage extends StatelessWidget {
             Center(
               child: GymButton(
                 'Registrar',
-                onPressed: () {},
+                onPressed: controller.register,
               ),
             ),
             const Gap(40),

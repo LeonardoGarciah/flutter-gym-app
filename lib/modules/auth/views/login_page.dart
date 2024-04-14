@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
             Center(
               child: GymButton(
                 'Entrar',
-                onPressed: () {},
+                onPressed: controller.login,
               ),
             ),
             const Gap(40),

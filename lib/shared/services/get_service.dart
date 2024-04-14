@@ -1,8 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' as flutter_bloc;
 import 'package:get/get.dart';
 
 class GetService {
+  static T getBloc<T extends flutter_bloc.StateStreamableSource<Object?>>(T Function() bloc,
+      {BuildContext? context}) {
+    if ((context ?? Get.context) != null) {
+      return flutter_bloc.BlocProvider.of<T>(context ?? Get.context!);
+    } else {
+      return bloc();
+    }
+  }
+
   static Future? to(
       Widget Function() page, {
         Object? arguments,
