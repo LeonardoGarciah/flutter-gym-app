@@ -14,11 +14,22 @@ final class UserBlocEventClear extends UserBlocEvent {}
 class UserBloc extends HydratedBloc<UserBlocEvent, UserBlocState> {
   UserBloc() : super(UserBlocState.initial()) {
     on<UserBlocEventUpdateUser>((event, emit) {
-      emit(state.copyWith(user: event.user));
+      var newState = UserBlocState(user: state.user?.copyWith(event.user));
+
+      emit(newState);
     });
     on<UserBlocEventClear>((event, emit) {
       emit(UserBlocState.initial());
     });
+  }
+
+  @override
+  void onTransition(Transition<UserBlocEvent, UserBlocState> transition) {
+    super.onTransition(transition);
+    print("===========current============");
+    print(transition.currentState.toJson());
+    print("===========next============");
+    print(transition.nextState.toJson());
   }
 
   @override

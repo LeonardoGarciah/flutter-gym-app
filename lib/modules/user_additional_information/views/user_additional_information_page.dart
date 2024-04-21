@@ -8,8 +8,7 @@ import 'package:flutter_gym_app/modules/user_additional_information/widgets/step
 import 'package:flutter_gym_app/modules/user_additional_information/widgets/steps/user_select_years_old.dart';
 import 'package:flutter_gym_app/shared/widgets/gym_scaffold.dart';
 
-class UserAdditionalInformationPage
-    extends StatelessWidget {
+class UserAdditionalInformationPage extends StatelessWidget {
   const UserAdditionalInformationPage({super.key});
 
   @override
@@ -35,14 +34,10 @@ class UserAdditionalInformationPage
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ValueListenableBuilder(
-            valueListenable: userStepController.currentStep,
-            builder: (context, value, child) {
-              return AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                child: getStep()
-              );
-            }
-          ),
+              valueListenable: userStepController.currentStep,
+              builder: (context, value, child) {
+                return AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: getStep());
+              }),
         ),
       ),
     );

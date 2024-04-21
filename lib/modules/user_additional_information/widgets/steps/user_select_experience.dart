@@ -11,19 +11,14 @@ class UserSelectExperience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        UserStepProvider.of(context).userStepController;
+    final controller = UserStepProvider.of(context).userStepController;
 
     return UserStepBuilder(
-      title: UserAdditionalInformationStepEnum
-          .experience.title,
-      subtitle: UserAdditionalInformationStepEnum
-          .experience.subtitle,
+      title: UserAdditionalInformationStepEnum.experience.title,
+      subtitle: UserAdditionalInformationStepEnum.experience.subtitle,
       body: ValueListenableBuilder(
         valueListenable: controller.values,
         builder: (context, value, child) {
-          print(value[UserAdditionalInformationStepEnum
-              .experience.value]);
           return SegmentedButton(
             style: ButtonStyle(
               iconColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
@@ -51,15 +46,9 @@ class UserSelectExperience extends StatelessWidget {
               ),
             ],
             onSelectionChanged: (value) {
-              controller.updateValue(
-                  UserAdditionalInformationStepEnum
-                      .experience.value,
-                  value);
+              controller.updateValue(UserAdditionalInformationStepEnum.experience.value, value);
             },
-            selected:
-              value[UserAdditionalInformationStepEnum
-                  .experience.value]
-            ,
+            selected: value[UserAdditionalInformationStepEnum.experience.value],
           );
         },
       ),

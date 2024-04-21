@@ -1,25 +1,26 @@
 class UserDomain {
-  final String token;
+  final String? token;
+  final bool? firstAccess;
 
   UserDomain({
-    required this.token,
+    this.token,
+    this.firstAccess,
   });
 
   Map<String, dynamic> toJson() => {
     'token': token,
+    'firstAccess': firstAccess,
   };
 
   factory UserDomain.fromJson(Map<String, dynamic> json) => UserDomain(
     token: json['token'],
+    firstAccess: json['firstAccess'],
   );
 
-  UserDomain copyWith({
-    String? id,
-    String? name,
-    String? token,
-  }) {
+  UserDomain copyWith(UserDomain user) {
     return UserDomain(
-      token: token ?? this.token,
+      token: user.token ?? token,
+      firstAccess: user.firstAccess ?? firstAccess,
     );
   }
 }

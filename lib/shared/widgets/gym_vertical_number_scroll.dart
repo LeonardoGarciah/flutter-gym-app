@@ -31,25 +31,23 @@ class _GymVerticalNumberScrollState extends State<GymVerticalNumberScroll> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: CupertinoPicker(
-        scrollController: FixedExtentScrollController(initialItem: _selectedValue - widget.minValue),
-        itemExtent: 40.0, // Adjust item height as needed
-        children: List.generate(widget.maxValue - widget.minValue + 1, (index) {
-          final value = index + widget.minValue;
-          return Center(
-            child: GymText(
-              value.toString(),
-            ),
-          );
-        }),
-        onSelectedItemChanged: (int index) {
-          setState(() {
-            _selectedValue = index + widget.minValue;
-            widget.onValueChanged(_selectedValue);
-          });
-        },
-      ),
+    return CupertinoPicker(
+      scrollController: FixedExtentScrollController(initialItem: _selectedValue - widget.minValue),
+      itemExtent: 40.0, // Adjust item height as needed
+      children: List.generate(widget.maxValue - widget.minValue + 1, (index) {
+        final value = index + widget.minValue;
+        return Center(
+          child: GymText(
+            value.toString(),
+          ),
+        );
+      }),
+      onSelectedItemChanged: (int index) {
+        setState(() {
+          _selectedValue = index + widget.minValue;
+          widget.onValueChanged(_selectedValue);
+        });
+      },
     );
   }
 }

@@ -34,14 +34,15 @@ class GymButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon != null) Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: FaIcon(
-                icon,
-                size: size.value / 2,
-                color: Theme.of(context).colorScheme.secondary,
+            if (icon != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: FaIcon(
+                  icon,
+                  size: size.value / 2,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
-            ),
             Text(
               text,
               style: TextStyle(
@@ -65,11 +66,12 @@ class GymButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (icon != null) FaIcon(
-            icon,
-            size: size.value / 2,
-            color: Colors.white,
-          ),
+          if (icon != null)
+            FaIcon(
+              icon,
+              size: size.value / 2,
+              color: Colors.white,
+            ),
           Text(
             text,
             style: TextStyle(

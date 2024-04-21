@@ -46,13 +46,17 @@ class UserStepBuilder extends StatelessWidget {
         Row(
           mainAxisAlignment: previousStep == null ? MainAxisAlignment.center : MainAxisAlignment.spaceBetween,
           children: [
-            if (previousStep != null) GymButton(
-              'Voltar',
-              icon: FontAwesomeIcons.arrowLeft,
-              onPressed: previousStep!,
-              type: ButtonTypeEnum.text,
-            ),
-            GymButton('Próximo', onPressed: nextStep)
+            if (previousStep != null)
+              GymButton(
+                'Voltar',
+                icon: FontAwesomeIcons.arrowLeft,
+                onPressed: previousStep!,
+                type: ButtonTypeEnum.text,
+              ),
+            GymButton(
+              'Próximo',
+              onPressed: nextStep,
+            )
           ],
         ),
       ],

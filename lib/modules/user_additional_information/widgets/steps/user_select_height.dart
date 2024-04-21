@@ -18,7 +18,9 @@ class UserSelectHeight extends StatelessWidget {
         minValue: 0,
         maxValue: 200,
         initialValue: 18,
-        onValueChanged: (value) {},
+        onValueChanged: (value) {
+          controller.updateValue(UserAdditionalInformationStepEnum.height.value, value);
+        },
       ),
       previousStep: controller.previousStep,
       nextStep: controller.nextStep,

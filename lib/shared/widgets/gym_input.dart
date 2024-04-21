@@ -11,6 +11,7 @@ class GymInput extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
   final int? maxLength;
+  final Function(String)? onChanged;
 
   const GymInput({
     super.key,
@@ -20,6 +21,7 @@ class GymInput extends StatelessWidget {
     required this.hintText,
     this.obscureText,
     this.maxLength,
+    this.onChanged,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
   });
@@ -36,6 +38,7 @@ class GymInput extends StatelessWidget {
       focusNode: _inputFocusNode,
       textInputAction: textInputAction,
       maxLength: maxLength,
+      onChanged: onChanged,
       decoration: InputDecoration(
         fillColor: Theme.of(context).colorScheme.tertiary,
         focusColor: Theme.of(context).colorScheme.secondary,

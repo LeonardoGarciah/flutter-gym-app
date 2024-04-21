@@ -6,20 +6,24 @@ import 'package:flutter_gym_app/shared/services/get_service.dart';
 class DioOptions {
   final int? clientId;
   final String? contentType;
+  final String? token;
 
   DioOptions({
     this.clientId,
     this.contentType,
+    this.token,
   });
 
   DioOptions copyWith({
     int? clientId,
     String? contentType,
     String? userRole,
+    String? token,
   }) {
     return DioOptions(
       clientId: clientId ?? this.clientId,
       contentType: contentType ?? this.contentType,
+      token: token ?? this.token,
     );
   }
 }
@@ -33,13 +37,13 @@ class DioClient {
 
     var token = userBloc.state.user?.token ?? '';
 
-    jwtToken = token ?? '';
+    jwtToken = options?.token ?? token ?? '';
 
     final dio = Dio(BaseOptions(
       baseUrl: baseUrlParam ?? baseUrl,
       headers: {
         'Content-Type': options?.contentType ?? 'application/json',
-        'Authorization': 'Bearer $token',
+        'Authorization': 'Bearer $jwtToken',
         // 'Peetly-Params': peetlyParams,
       },
     ));
@@ -81,18 +85,9 @@ class DioClient {
           }
 
           var data = error.response?.data;
-          if (data is Map) {
-            var errorMessage = data['message'];
-            if (errorMessage != null) {
-              if (errorMessage is String) {
-                GetService.snackbarError(errorMessage);
-              } else if (errorMessage is List) {
-                if (errorMessage.isNotEmpty) {
-                  GetService.snackbarError(errorMessage[0]);
-                }
-              }
-            }
-          }
+         if (data != null) {
+           GetService.snackbarError(data);
+         }
         } else {
           if (kDebugMode) {
             print('Erro desconhecido: $error');

@@ -18,7 +18,9 @@ class UserSelectYearsOld extends StatelessWidget {
         minValue: 0,
         maxValue: 200,
         initialValue: 18,
-        onValueChanged: (value) {},
+        onValueChanged: (value) {
+          controller.updateValue(UserAdditionalInformationStepEnum.yearsOld.value, value);
+        },
       ),
       nextStep: controller.nextStep,
     );

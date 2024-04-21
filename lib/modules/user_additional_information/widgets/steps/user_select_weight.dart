@@ -16,10 +16,13 @@ class UserSelectWeight extends StatelessWidget {
       title: UserAdditionalInformationStepEnum.weight.title,
       subtitle: UserAdditionalInformationStepEnum.weight.subtitle,
       body: GymInput(
-        maxLength: 5,
         controller: TextEditingController(),
+        maxLength: 5,
         keyboardType: TextInputType.number,
         prefixIcon: FontAwesomeIcons.weightHanging,
+        onChanged: (value) {
+          controller.updateValue(UserAdditionalInformationStepEnum.weight.value, double.tryParse(value) ?? 0.0);
+        },
         hintText: 'Peso em kg',
       ),
       previousStep: controller.previousStep,

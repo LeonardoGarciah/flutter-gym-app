@@ -24,6 +24,6 @@ class UserBlocState {
   );
 
   factory UserBlocState.initial() => UserBlocState(
-    user: null,
+    user: UserDomain(),
   );
 }
