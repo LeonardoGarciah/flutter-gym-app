@@ -24,8 +24,7 @@ class GymButton extends StatelessWidget {
     if (type == ButtonTypeEnum.text)
       return TextButton(
         style: TextButton.styleFrom(
-          primary: Theme.of(context).colorScheme.secondary,
-          padding: EdgeInsets.symmetric(
+          foregroundColor: Theme.of(context).colorScheme.secondary, padding: EdgeInsets.symmetric(
             horizontal: size.value / 2,
             vertical: size.value / 2,
           ),
@@ -56,7 +55,7 @@ class GymButton extends StatelessWidget {
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         padding: EdgeInsets.symmetric(
           horizontal: size.value * 2,
           vertical: size.value / 2,

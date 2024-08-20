@@ -1,4 +1,3 @@
-import 'package:flutter_gym_app/shared/domain/user_domain.dart';
 import 'package:flutter_gym_app/shared/repositories/http/dio_client.dart';
 import 'package:flutter_gym_app/shared/repositories/http/user/dtos/update_user_dto.dart';
 import 'package:flutter_gym_app/shared/repositories/http/user/dtos/user_response.dart';

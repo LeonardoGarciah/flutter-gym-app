@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gym_app/modules/home/views/home_page.dart';
 import 'package:flutter_gym_app/modules/user_additional_information/enums/user_additional_information_step_enum.dart';
+import 'package:flutter_gym_app/shared/domain/user_domain.dart';
+import 'package:flutter_gym_app/shared/repositories/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter_gym_app/shared/repositories/http/user/dtos/update_user_dto.dart';
 import 'package:flutter_gym_app/shared/repositories/http/user/user_repository.dart';
 import 'package:flutter_gym_app/shared/services/get_service.dart';
@@ -14,7 +16,7 @@ class UserStepController {
 
   final currentStep = ValueNotifier<UserAdditionalInformationStepEnum>(UserAdditionalInformationStepEnum.yearsOld);
 
-  final  values = ValueNotifier<Map<String, dynamic>>({
+  final values = ValueNotifier<Map<String, dynamic>>({
     UserAdditionalInformationStepEnum.yearsOld.value: 18,
     UserAdditionalInformationStepEnum.height.value: 0,
     UserAdditionalInformationStepEnum.weight.value: 0,
@@ -46,6 +48,15 @@ class UserStepController {
 
     try {
       await _userRepository.updateUser(updateUserDto);
+
+      UserBloc userBloc = GetService.getBloc(() => UserBloc());
+
+      userBloc.add(
+        UserBlocEventUpdateUser(
+          UserDomain(firstAccess: false),
+        ),
+      );
+
       GetService.snackbarSuccess('Informações atualizadas com sucesso!');
 
       GetService.off(() => const HomePage());

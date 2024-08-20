@@ -35,9 +35,9 @@ class DioClient {
   Future<Dio> _createDio([DioOptions? options, String? baseUrlParam]) async {
     UserBloc userBloc = GetService.getBloc(() => UserBloc());
 
-    var token = userBloc.state.user?.token ?? '';
+    String token = userBloc.state.user?.token ?? '';
 
-    jwtToken = options?.token ?? token ?? '';
+    jwtToken = options?.token ?? token;
 
     final dio = Dio(BaseOptions(
       baseUrl: baseUrlParam ?? baseUrl,

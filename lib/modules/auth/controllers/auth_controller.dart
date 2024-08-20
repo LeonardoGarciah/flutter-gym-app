@@ -5,6 +5,7 @@ import 'package:flutter_gym_app/modules/auth/dtos/register_dto.dart';
 import 'package:flutter_gym_app/modules/auth/repositories/auth_repository.dart';
 import 'package:flutter_gym_app/modules/auth/views/login_page.dart';
 import 'package:flutter_gym_app/modules/auth/views/register_page.dart';
+import 'package:flutter_gym_app/modules/exercise/views/exercise_page.dart';
 import 'package:flutter_gym_app/modules/home/views/home_page.dart';
 import 'package:flutter_gym_app/modules/user_additional_information/views/user_additional_information_page.dart';
 import 'package:flutter_gym_app/shared/domain/user_domain.dart';
@@ -22,14 +23,17 @@ class AuthController {
   final showPassword = ValueNotifier<bool>(false);
 
   final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
   final UserController _userController = UserController();
 
   static Widget verifyAuthenticateRoute() {
     UserBloc userBloc = GetService.getBloc(() => UserBloc());
 
-    if (userBloc.state.user?.firstAccess == true) {
-      return const UserAdditionalInformationPage();
+    if (userBloc.state.user?.token != null) {
+      if (userBloc.state.user?.firstAccess == true) {
+        return const UserAdditionalInformationPage();
+      }
+
+      return const ExercisePage();
     }
 
     return const LoginPage();
